@@ -4,42 +4,30 @@ public class CentroCultivo {
 
     private String nombre;
     private String comuna;
-    private int produccionToneladas;
+    private int produccionKg;
 
-    public CentroCultivo(String nombre, String comuna, int produccionToneladas) {
+    public CentroCultivo(String nombre, String comuna, int produccionKg) {
         this.nombre = nombre;
         this.comuna = comuna;
-        this.produccionToneladas = produccionToneladas;
+        this.produccionKg = produccionKg;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getComuna() { return comuna; }
+    public void setComuna(String comuna) { this.comuna = comuna; }
 
-    public String getComuna() {
-        return comuna;
-    }
-
-    public void setComuna() {
-        this.comuna = comuna;
-    }
-
-    public int getProduccionToneladas() {
-        return produccionToneladas;
-    }
-
-    public void setProduccionToneladas(int produccionToneladas) {
-        this.produccionToneladas = produccionToneladas;
+    public int getProduccionToneladas() { return produccionKg; }
+    public void setProduccionToneladas(int produccionKg) {
+        this.produccionKg = produccionKg;
     }
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + System.lineSeparator() +
-                "Comuna: " + comuna + System.lineSeparator() +
-                "Produccion: " + produccionToneladas + " Toneladas";
+        return "\nCentro de Cultivo" +
+                "\nNombre: " + nombre +
+                "\nComuna: " + comuna +
+                "\nProducción: " + produccionKg + " KG\n";
     }
 }

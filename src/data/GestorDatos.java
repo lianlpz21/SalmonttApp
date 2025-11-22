@@ -3,7 +3,6 @@ package data;
 import model.CentroCultivo;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ public class GestorDatos {
 
         try {
             FileReader fr = new FileReader("resources/centros.txt");
-            System.out.println("Archivo abierto");
             BufferedReader br = new BufferedReader(fr);
 
             String linea;
@@ -28,15 +26,13 @@ public class GestorDatos {
                 lista.add(centro);
             }
 
-            br.close(); // cerrar archivo
+            br.close();
         }
         catch (IOException err) {
-            System.out.println(err.getMessage());
+            System.out.println("Error al leer archivo: " + err.getMessage());
         }
 
-        return lista; // Devolver lista completa
+        return lista;
     }
-
-
 
 }
