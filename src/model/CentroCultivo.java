@@ -7,25 +7,39 @@ public class CentroCultivo {
     private int produccionKg;
 
     public CentroCultivo(String nombre, String comuna, int produccionKg) {
-        this.nombre = nombre;
-        this.comuna = comuna;
-        this.produccionKg = produccionKg;
+        setNombre(nombre);
+        setComuna(comuna);
+        setProduccionKg(produccionKg);
     }
 
     public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-
     public String getComuna() { return comuna; }
-    public void setComuna(String comuna) { this.comuna = comuna; }
+    public int getProduccionKg() { return produccionKg; }
 
-    public int getProduccionToneladas() { return produccionKg; }
-    public void setProduccionToneladas(int produccionKg) {
+    public void setNombre(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacío.");
+        }
+        this.nombre = nombre;
+    }
+
+    public void setComuna(String comuna) {
+        if (comuna == null || comuna.trim().isEmpty()) {
+            throw new IllegalArgumentException("La comuna no puede estar vacía.");
+        }
+        this.comuna = comuna;
+    }
+
+    public void setProduccionKg(int produccionKg) {
+        if (produccionKg < 0) {
+            throw new IllegalArgumentException("La producción no puede ser negativa.");
+        }
         this.produccionKg = produccionKg;
     }
 
     @Override
     public String toString() {
-        return "\nCentro de Cultivo" +
+        return "\n--- Centro de Cultivo ---" +
                 "\nNombre: " + nombre +
                 "\nComuna: " + comuna +
                 "\nProducción: " + produccionKg + " KG\n";
