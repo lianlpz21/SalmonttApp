@@ -1,3 +1,27 @@
+# SalmonttApp semana 6
+
+En esta semana se implementó una jerarquía de clases con herencia simple, representando las unidades operativas de la empresa Salmontt.
+El objetivo fue reutilizar atributos comunes, extender funcionalidades y organizar el proyecto en paquetes claros y escalables.
+
+# Jerarquía de clases creadas:
+- model/
+
+1. UnidadOperativa (superclase) - Atributos: nombre, comuna
+2. CentroCultivo (subclase) - Atributo: toneladasProduccion
+3. PlantaProceso (subclase) - Atributo: capacidadProceso
+
+Cada subclase sobrescribe toString() para mostrar su información completa.
+
+- data/
+
+1. GestorUnidades: Crea instancias de prueba de CentroCultivo y PlantaProceso. 
+Retorna los objetos para ser mostrados en consola.
+
+- ui/
+
+1. MainFormativa: Llama a GestorUnidades. 
+Muestra por consola los objetos creados utilizando toString().
+
 # SalmonttApp
 
 El proyecto está organizado en cuatro paquetes:
