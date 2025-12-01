@@ -1,7 +1,7 @@
-package app;
+package ui;
 
 import model.CentroCultivo;
-import service.GestorDatos;
+import data.GestorDatos;
 
 import java.util.ArrayList;
 import java.util.Scanner;

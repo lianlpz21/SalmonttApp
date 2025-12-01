@@ -1,4 +1,4 @@
-package service;
+package data;
 
 import model.CentroCultivo;
 import util.Validador;

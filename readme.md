@@ -5,7 +5,7 @@ El proyecto está organizado en cuatro paquetes:
 - model
 - service
 - util
-- app
+- ui
 
 En **model** está la clase CentroCultivo.
 Aquí solo defino los datos de cada centro: nombre, comuna y producción en kilos.
@@ -13,11 +13,11 @@ Aquí solo defino los datos de cada centro: nombre, comuna y producción en kilo
 En **util** está la clase Validador.
 Se usa para revisar que los datos del archivo tengan el formato correcto.
 
-En **service** está la clase GestorDatos.
+En **data** está la clase GestorDatos.
 Esta clase lee el archivo centros.txt, separa cada línea con split(";"), valida los campos
 y crea los objetos CentroCultivo. Todos los centros válidos se guardan en una lista.
 
-En **app** está la clase Main.
+En **ui** está la clase Main.
 Aquí se ejecuta el programa, se muestra el menú y se hacen los filtros y búsquedas.
 
 ------------------------------------
