@@ -1,5 +1,0 @@
-Isla Huar;Calbuco;1200
-Canal Caicaén;Calbuco;800
-Pillán;Puerto Montt;1600
-Chaicas;Puerto Montt;950
-Quillaipe;Puerto Montt;2000

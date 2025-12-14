@@ -1,6 +1,6 @@
 package model;
 
-public class PlantaProceso extends UnidadOperativa{
+public class PlantaProceso extends UnidadOperativa {
 
     private int capacidadProceso;
 
@@ -9,18 +9,11 @@ public class PlantaProceso extends UnidadOperativa{
         this.capacidadProceso = capacidadProceso;
     }
 
-    public int getCapacidadProceso() {
-        return capacidadProceso;
-    }
-
-    public void setCapacidadProceso(int capacidadProceso) {
-        this.capacidadProceso = capacidadProceso;
-    }
-
     @Override
-    public String toString() {
-        return "PlantaProceso{" +
-                "capacidadProceso=" + capacidadProceso +
-                '}';
+    public String mostrarResumen() {
+        return "Planta de Proceso\n" +
+                "Nombre: " + getNombre() + "\n" +
+                "Comuna: " + getComuna() + "\n" +
+                "Capacidad: " + capacidadProceso + " KG";
     }
 }

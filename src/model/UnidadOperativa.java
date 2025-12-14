@@ -1,6 +1,6 @@
 package model;
 
-public class UnidadOperativa {
+public abstract class UnidadOperativa implements Registrable {
 
     private String nombre;
     private String comuna;
@@ -14,23 +14,7 @@ public class UnidadOperativa {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getComuna() {
         return comuna;
-    }
-
-    public void setcomuna(String comuna) {
-        this.comuna = comuna;
-    }
-
-    @Override
-    public String toString() {
-        return "UnidadOperativa{" +
-                "nombre='" + nombre + '\'' +
-                ", comuna='" + comuna + '\'' +
-                '}';
     }
 }

@@ -1,63 +1,91 @@
 package ui;
 
-import model.CentroCultivo;
-import data.GestorDatos;
+import data.GestorEntidades;
+import model.*;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.swing.*;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        GestorDatos gd = new GestorDatos();
-        ArrayList<CentroCultivo> centros = gd.cargarCentros();
-
-        Scanner sc = new Scanner(System.in);
+        GestorEntidades gestor = new GestorEntidades();
         int opcion;
 
         do {
-            System.out.println("\n======== SISTEMA SALMONTT ========");
-            System.out.println("1. Mostrar todos los centros");
-            System.out.println("2. Mostrar centros con producción > 1000 kg");
-            System.out.println("3. Buscar por comuna");
-            System.out.println("4. Salir");
-            System.out.print("Seleccione opción: ");
+            opcion = pedirEntero(
+                    "SISTEMA SALMONTT\n\n" +
+                            "1. Agregar Empleado\n" +
+                            "2. Agregar Proveedor\n" +
+                            "3. Agregar Centro de Cultivo\n" +
+                            "4. Mostrar registros\n" +
+                            "0. Salir"
+            );
 
-            opcion = sc.nextInt();
-            sc.nextLine();
+            if (opcion == -1) {
+                JOptionPane.showMessageDialog(null, "Cerrando sistema...");
+                System.exit(0);
+            }
 
             switch (opcion) {
 
-                case 1:
-                    System.out.println("===== LISTA COMPLETA DE CENTROS =====");
-                    centros.forEach(System.out::println);
-                    break;
+                case 1 -> {
+                    String nombre = JOptionPane.showInputDialog("Nombre del empleado:");
+                    if (nombre == null) break;
 
-                case 2:
-                    System.out.println("===== CENTROS CON PRODUCCIÓN > 1000 KG =====");
-                    centros.stream()
-                            .filter(c -> c.getProduccionKg() > 1000)
-                            .forEach(System.out::println);
-                    break;
+                    String cargo = JOptionPane.showInputDialog("Cargo:");
+                    if (cargo == null) break;
 
-                case 3:
-                    System.out.print("Ingrese comuna a buscar: ");
-                    String comunaBuscada = sc.nextLine();
+                    gestor.agregarEntidad(new Empleado(nombre, cargo));
+                }
 
-                    System.out.println("===== RESULTADOS =====");
-                    centros.stream()
-                            .filter(c -> c.getComuna().equalsIgnoreCase(comunaBuscada))
-                            .forEach(System.out::println);
-                    break;
+                case 2 -> {
+                    String nombre = JOptionPane.showInputDialog("Nombre del proveedor:");
+                    if (nombre == null) break;
 
-                case 4:
-                    System.out.println("Cerrando sistema...");
-                    break;
+                    String rubro = JOptionPane.showInputDialog("Rubro:");
+                    if (rubro == null) break;
 
-                default:
-                    System.out.println("Opción inválida. Intente nuevamente.");
+                    gestor.agregarEntidad(new Proveedor(nombre, rubro));
+                }
+
+                case 3 -> {
+                    String nombre = JOptionPane.showInputDialog("Nombre del centro:");
+                    if (nombre == null) break;
+
+                    String comuna = JOptionPane.showInputDialog("Comuna:");
+                    if (comuna == null) break;
+
+                    int prod = pedirEntero("Producción en KG:");
+                    if (prod >= 0) {
+                        gestor.agregarEntidad(new CentroCultivo(nombre, comuna, prod));
+                    }
+                }
+
+                case 4 -> gestor.mostrarEntidades();
             }
 
-        } while (opcion != 4);
+        } while (opcion != 0);
+
+        JOptionPane.showMessageDialog(null, "Programa finalizado");
+    }
+
+    private static int pedirEntero(String mensaje) {
+        while (true) {
+            String input = JOptionPane.showInputDialog(mensaje);
+
+            if (input == null) return -1;
+
+            if (input.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "El campo no puede estar vacío");
+                continue;
+            }
+
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar un número válido");
+            }
+        }
     }
 }
